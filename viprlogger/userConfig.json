@@ -1,0 +1,36 @@
+{
+  "_comment": "This json file is the configuration file intended to be used by the user for passing the inputs",
+  "_comment": "ServiceLogsToOutput key value is used to list all the services that need to be seen in the output.",
+  "_comment": "For eg., if sasvc service is mentioned as a value only the output from the sasvc from all nodes will be shown in the output for the order information passed.",
+  "_comment": "Here ServiceLogsToOutput is hte key and the list (in square brackets) are the values associated with the key.",
+  "_comment": "If you do not want to filter any of the service logs, you can either remove ServiceLogsToOutput section (key and values), or remove all the values under ServiceLogsToOutput key or put the value None for the key ",
+
+  "ServiceLogsToOutput":
+                        [
+                          "sasvc", "portalsvc"
+                        ],
+
+  "_comment": "If more than one order needs to be investigated, the same can be passed as a list in the orderInfoList section . The LM expects the order info to be passed either in the command line or here.",
+  "_comment": "If orderInfo is passed both in command line and in the orderInfoList section, the orderInfo in the command line will be considered for LM investigation.",
+  "_comment": "If orderInfo is passed both in command line and in the orderInfoList section, the orderInfo in the command line will be considered for LM investigation.",
+  "_comment": "The writeInSingleFile flag accepts values True / False (case-insensitive, in quotes)",
+  "_comment": "If writeInSingleFile flag is set to True, the list of orders passed in the orderInfoList will be investigated by LM",
+  "_comment": "and the output will be written as a single file.",
+  "_comment": "If writeInSingleFile flag is set to False (or any other value other than True), the list of orders passed in the orderInfoList will be investigated by LM",
+  "_comment": "and the output will be written in separate files. It's much similar to running LM with the each of the ordersInfo from this list, with -o option) in the command line.",
+  "_comment": "If the user does not set this flag, the default will be True. ie., all log (of these orders) will be written to the same LM output file.",
+  "_comment": "The fileNameAppendString is used to name the output file. The user can set some unique identifier here and the output files will be named accordingly.",
+
+
+  "orderInfo" : {
+    "orderInfoList":
+                    [
+                      " 99 ", "100", "urn:storageos:Host:f604a577-0247-45ee-885a-0263c3df9ce0:vdc1"
+                    ],
+
+    "writeInSingleFile": "True",
+    "fileNameAppendString": "UniqueId"
+  }
+
+
+}

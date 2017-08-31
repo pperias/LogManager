@@ -1,0 +1,44 @@
+{
+  "_comment": "Folder where the log files are extracted",
+  "Data_Directory": "Data",
+  "Output_Directory": "Output",
+  "Download_Directory": "download",
+
+  "_comment": "The application assumes that the zip file with all log files under the logs folder.",
+  "log_folder": "logs",
+
+  "_comment": "The regex used in the application. Please use caution when modifying the following",
+  "date_regex": "((?:2|1)\\d{3}(?:-|\\/)(?:(?:0[1-9])|(?:1[0-2]))(?:-|\\/)(?:(?:0[1-9])|(?:[1-2][0-9])|(?:3[0-1]))(?:\\s)(?:(?:[0-1][0-9])|(?:2[0-3])):(?:[0-5][0-9]):(?:[0-5][0-9]),\\d{3})",
+  "urn_regex": "urn:[\\w-]*:[\\w-]*:[\\w-]*:[\\w]*",
+  "orderNumber_regex": "vipr:orderNumber=[\\w]*",
+  "opId_regex": "(?<!:|\\w)[\\w]{8}-[\\w]*-[\\w]*-[\\w]*-[\\w]{12}(?!:|\\w)",
+  "stepId_regex": "(?<!:|\\w)[\\w]{8}-[\\w]{4}-[\\w]{4}-[\\w]{4}-[\\w]{20}-[\\w]*-[\\w]*-[\\w]*-[\\w]{12}(?!:|\\w)",
+  "queued_state_regex": "queued state",
+  "orderNumber_anomaly_regex_1": "ExecutionEngineImpl.java.*Executing order.*\\[",
+  "_comment": "We need two regex since there is a line number which is integer as well in the line. wanted to ensure that the line contains both string ExecutionEngineImpl.java and Executing order",
+  "_comment": "Yes this is a very lazy way but unless we do this the failed orders cannot be associated with the order id. ",
+  "orderNumber_anomaly_regex_2": "(?<=Executing order:\\s)(\\d+)(?=\\s\\[)",
+  "_comment": "The following files are used for writing the intermediary results",
+  "debug_metaDBList_file": "debug_metaDBList",
+  "debug_keywordDict_file": "debug_keywordDictionary.txt",
+  "debug_log_metaDb_output_file": "debug_logOutput_metadb",
+
+  "_comment": "The following file are the actual output files",
+  "write_log_output_complete_file": "LogManager_COMPLETE_Output",
+  "write_log_output_userSpecified_file": "lm_UserSpecifiedServices_Output",
+  "write_tree_output_file": "LogManager_TreeOutput",
+  "write_orderKeys_file": "orderInfoKeywordOutput",
+
+  "_comment": "The following file are printed for Usecase 9: story S14 and S15 ",
+  "write_log_output_Step": "logOutput_Step",
+
+  "_comment": "The following svc are written in individual files. More services can be configured if required",
+  "log_output_individualSvc": ["controllersvc","portalsvc", "sasvc","apisvc"],
+
+  "_comment": "The log filename is lm_{servicename}",
+  "write_log_output_indSvc": "lm_",
+
+  "_comment": "The following is for mapping the request to response in Portalsvc, sasvc etc., There is an issue where the thread id of request and response is reused and hence we get wrong output. Hence the following is turned off. Set it to True if there is a need to map the request and response",
+  "map_request_response" : "False"
+
+}
